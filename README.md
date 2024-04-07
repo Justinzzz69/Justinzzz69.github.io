@@ -1,1 +1,1 @@
-# Justinzzz69.github.io
+Ihr Stinkt alle nach furz
