@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie-Einwilligung</title>
+    <title>Landwirtschaft - Nachhaltige Zukunft</title>
+    
+    <!-- Meta Tags für Discord (Open Graph und Twitter Cards) -->
+    <meta property="og:title" content="Landwirtschaft für eine nachhaltige Zukunft">
+    <meta property="og:description" content="Entdecken Sie die neuesten Trends und Technologien für eine umweltfreundliche und zukunftsorientierte Landwirtschaft.">
+    <meta property="og:image" content="https://example.com/landwirtschaft.jpg">
+    <meta property="og:url" content="https://example.com">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Landwirtschaft - Zukunft gestalten">
+    <meta name="twitter:description" content="Erfahren Sie alles über nachhaltige Landwirtschaft und wie Sie die Umwelt schonen können.">
+    <meta name="twitter:image" content="https://example.com/landwirtschaft.jpg">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,6 +36,29 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Popup-Animationen */
+        @keyframes popupIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popupOut {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+
         #cookiePopup {
             display: flex;
             flex-direction: column;
@@ -38,6 +73,12 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 999;
+            animation: popupIn 0.5s ease-out;
+        }
+
+        #cookiePopup.hide {
+            animation: popupOut 0.5s ease-in;
+            animation-fill-mode: forwards;
         }
 
         #cookiePopup p {
@@ -109,7 +150,7 @@
 <body>
 
     <div id="cookiePopup">
-        <p>Wir verwenden Cookies, um Inhalte zu personalisieren, um Funktionen für soziale Medien anbieten zu können und um Zugriffe auf unsere Website zu analysieren. Weitere Informationen finden Sie in unserer <a href="https://pornhub.com">Datenschutzerklärung</a>.</p>
+        <p>Wir verwenden Cookies, um Inhalte zu personalisieren, um Funktionen für soziale Medien anbieten zu können und um Zugriffe auf unsere Website zu analysieren. Weitere Informationen finden Sie in unserer <a href="https://example.com/datenschutz">Datenschutzerklärung</a>.</p>
         <div id="cookieButtons">
             <button id="acceptButton">Akzeptieren</button>
             <button id="moreInfoButton">Mehr erfahren</button>
@@ -130,21 +171,23 @@
 
         // Funktion für den Jumpscare-Video und Fullscreen
         function showJumpscare() {
-            cookiePopup.style.display = 'none'; // Popup ausblenden
-            scareVideo.style.display = 'block'; // Video anzeigen
-            scareVideo.volume = 1.0;            // Lautstärke auf Maximum setzen
-            scareVideo.play();                  // Video abspielen
+            cookiePopup.classList.add('hide');  // Popup mit Animation ausblenden
+            setTimeout(() => {
+                scareVideo.style.display = 'block'; // Video anzeigen
+                scareVideo.volume = 1.0;            // Lautstärke auf Maximum setzen
+                scareVideo.play();                  // Video abspielen
 
-            // Vollbildmodus aktivieren
-            if (scareVideo.requestFullscreen) {
-                scareVideo.requestFullscreen();
-            } else if (scareVideo.mozRequestFullScreen) { // Firefox
-                scareVideo.mozRequestFullScreen();
-            } else if (scareVideo.webkitRequestFullscreen) { // Chrome, Safari und Opera
-                scareVideo.webkitRequestFullscreen();
-            } else if (scareVideo.msRequestFullscreen) { // IE/Edge
-                scareVideo.msRequestFullscreen();
-            }
+                // Vollbildmodus aktivieren
+                if (scareVideo.requestFullscreen) {
+                    scareVideo.requestFullscreen();
+                } else if (scareVideo.mozRequestFullScreen) { // Firefox
+                    scareVideo.mozRequestFullScreen();
+                } else if (scareVideo.webkitRequestFullscreen) { // Chrome, Safari und Opera
+                    scareVideo.webkitRequestFullscreen();
+                } else if (scareVideo.msRequestFullscreen) { // IE/Edge
+                    scareVideo.msRequestFullscreen();
+                }
+            }, 500);  // Warte, bis die Ausblend-Animation abgeschlossen ist
         }
 
         // Jumpscare nach Klick auf den "Akzeptieren"-Button
@@ -154,7 +197,7 @@
 
         // Button "Mehr erfahren" zeigt nur eine realistische Aktion, führt aber zu nichts
         moreInfoButton.addEventListener('click', function() {
-            alert('Leck eier und click auf Akzeptieren.');
+            alert('Erfahren Sie mehr über unsere Datenschutzrichtlinien auf unserer Website.');
         });
     </script>
 
