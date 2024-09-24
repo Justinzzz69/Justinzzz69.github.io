@@ -1,3 +1,162 @@
-<html style="background-color: black;">
-<p style="color: white;"> hab harten durchfall </p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie-Einwilligung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(90deg, #ff7b54, #ffb85c, #ffd88a);
+            background-size: 400% 400%;
+            animation: backgroundFade 10s ease infinite;
+        }
+
+        @keyframes backgroundFade {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #cookiePopup {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        #cookiePopup p {
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin: 0 0 10px;
+            text-align: center;
+        }
+
+        #cookiePopup a {
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #cookiePopup a:hover {
+            text-decoration: underline;
+        }
+
+        #cookieButtons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #acceptButton {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+
+        #acceptButton:hover {
+            background-color: #45a049;
+        }
+
+        #moreInfoButton {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            background-color: transparent;
+            color: #0073e6;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #moreInfoButton:hover {
+            color: #005bb5;
+        }
+
+        video {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cookiePopup">
+        <p>Wir verwenden Cookies, um Inhalte zu personalisieren, um Funktionen für soziale Medien anbieten zu können und um Zugriffe auf unsere Website zu analysieren. Weitere Informationen finden Sie in unserer <a href="#">Datenschutzerklärung</a>.</p>
+        <div id="cookieButtons">
+            <button id="acceptButton">Akzeptieren</button>
+            <button id="moreInfoButton">Mehr erfahren</button>
+        </div>
+    </div>
+
+    <!-- Jumpscare Video -->
+    <video id="scareVideo" controls>
+        <source src="vid.mp4" type="video/mp4">
+        Dein Browser unterstützt kein HTML5-Video.
+    </video>
+
+    <script>
+        const acceptButton = document.getElementById('acceptButton');
+        const moreInfoButton = document.getElementById('moreInfoButton');
+        const scareVideo = document.getElementById('scareVideo');
+        const cookiePopup = document.getElementById('cookiePopup');
+
+        // Funktion für den Jumpscare-Video und Fullscreen
+        function showJumpscare() {
+            cookiePopup.style.display = 'none'; // Popup ausblenden
+            scareVideo.style.display = 'block'; // Video anzeigen
+            scareVideo.volume = 1.0;            // Lautstärke auf Maximum setzen
+            scareVideo.play();                  // Video abspielen
+
+            // Vollbildmodus aktivieren
+            if (scareVideo.requestFullscreen) {
+                scareVideo.requestFullscreen();
+            } else if (scareVideo.mozRequestFullScreen) { // Firefox
+                scareVideo.mozRequestFullScreen();
+            } else if (scareVideo.webkitRequestFullscreen) { // Chrome, Safari und Opera
+                scareVideo.webkitRequestFullscreen();
+            } else if (scareVideo.msRequestFullscreen) { // IE/Edge
+                scareVideo.msRequestFullscreen();
+            }
+        }
+
+        // Jumpscare nach Klick auf den "Akzeptieren"-Button
+        acceptButton.addEventListener('click', function() {
+            setTimeout(showJumpscare, 1000);    // Nach 1 Sekunde den Jumpscare zeigen
+        });
+
+        // Button "Mehr erfahren" zeigt nur eine realistische Aktion, führt aber zu nichts
+        moreInfoButton.addEventListener('click', function() {
+            alert('Weitere Informationen zu Cookies würden normalerweise hier angezeigt werden.');
+        });
+    </script>
+
+</body>
 </html>
